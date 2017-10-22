@@ -1,0 +1,35 @@
+	<script type="text/javascript" src="js/main.js"></script>	
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contatos</title>
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div id="content">
+		<div id="list">
+			<h1>Listagem de contatos</h1>
+			<table id="contactList">
+				<tr>				
+					<th> Nome </th>
+					<th> Telefone </th>
+					<th> # </th>	
+				</tr>
+			</table>
+		</div>
+
+		<div id="addContact">
+			<h1>Adicionar contato</h1>
+			<form>
+				<img src="img/person.png" width="2%">
+				<input type="text" name="nome" id="nome" required>
+				<img src="img/telephone.png" width="2%">
+				<input type="text" name="telefone" id="telefone" required>
+				<input type="button" name="save" value="Salvar" id="salvar">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
