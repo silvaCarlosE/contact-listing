@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function removerContato(contato){
-		console.log(contato);
-		contactToRemove = contato.path[0];
-		databaseRef.child(contactToRemove.id).remove();
+		//Atribuímos a contactToRemove
+		contactToRemove = contato.path[0].id;
+		databaseRef.child(contactToRemove).remove();
 		window.location.reload();
 	}
 });
