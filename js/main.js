@@ -20,10 +20,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	var databaseRef = database.ref().child('contatos');
 
   	saveButton.addEventListener('click', function(evt){
-  		var contato = { nome: nome.value, telefone: telefone.value };
-  		databaseRef.push().set(contato);
-    	nome.value = '';
-    	telefone.value = '';
+  		if(nome.value != '' && telefone.value != ''){
+
+  			var contato = { nome: nome.value, telefone: telefone.value };
+  			databaseRef.push().set(contato);
+  			nome.value = '';
+    		telefone.value = '';
+  		}else{
+  			alert("Preencha todos os campos");
+  		}  		
+    	
   	});
 
 	databaseRef.on('child_added', function(snapshot) {
@@ -41,19 +47,19 @@ document.addEventListener('DOMContentLoaded', function() {
 		telefoneElm.innerText = contato.telefone;
 		tr.appendChild(telefoneElm);
 
-      	var action = document.createElement("td");
       	var deleteButton = document.createElement("button");
       	deleteButton.setAttribute("id", contactKey);
 		deleteButton.onclick = removerContato;
 		deleteButton.innerHTML = "Remover";
 
+      	var action = document.createElement("td");
+      	action.setAttribute("class", "action");
 		action.appendChild(deleteButton);
       	tr.appendChild(action);
       	contactList.appendChild(tr);
 	}
 
-	function removerContato(contato){
-		//Atribuímos a contactToRemove
+	function removerContato(contato){		
 		contactToRemove = contato.path[0].id;
 		databaseRef.child(contactToRemove).remove();
 		window.location.reload();
